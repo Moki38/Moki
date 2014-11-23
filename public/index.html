@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Moki Boat (V 0.0.1)</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+<style type="text/css">
+.button {
+    position: fixed;
+    top: 80px;
+    left: 300px;
+    border-style: solid;
+    border-width: 0px 0px 3px;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.4) inset;
+    color: #ffffff;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    font-style: normal;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all 200ms ease-in-out 0s;
+    white-space: nowrap;
+    font-family: "Gotham Rounded A","Gotham Rounded B",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    padding: 19px 39px 18px;
+    font-size: 18px;
+    background-color: #C6CCD2;
+    border-color: #333333;
+    opacity: 0.5;
+}
+.button:hover {
+    background: none repeat scroll 0 0 #aaaaaa !important;
+    color: #ffffff;
+    border-color: #ffffff !important;
+}
+
+</style>
+
+  </head>
+
+  <body bgcolor="#00000000">
+
+<div id="canvasesdiv" style="position:relative; width:900px; height:600px">
+<canvas id="Canvas" width="900px" height="600px" style="z-index: 100"></canvas>
+</div>
+
+<button class=button onclick="change_heater()" data-text-swap="Heater ON">Heater OFF</button>
+
+<script type="text/javascript">
+
+var socket = io.connect();
+
+var constatus = "Not connected";
+var canvas = document.getElementById('Canvas');
+var context = canvas.getContext('2d');
+
+var temp1 = 0;
+var temp2 = 0;
+var mbar = 0;
+var humidity = 0;
+var heater = "OFF";
+
+var month_name=new Array(12);
+month_name[0]="January";
+month_name[1]="February";
+month_name[2]="March";
+month_name[3]="April";
+month_name[4]="May";
+month_name[5]="June";
+month_name[6]="July";
+month_name[7]="August";
+month_name[8]="September";
+month_name[9]="October";
+month_name[10]="November";
+month_name[11]="December";
+
+var button = document.querySelectorAll("button")[0];
+button.addEventListener('click', function() {
+  if (button.getAttribute("data-text-swap") == button.innerHTML) {
+    button.innerHTML = button.getAttribute("data-text-original");
+  } else {
+    button.setAttribute("data-text-original", button.innerHTML);
+    button.innerHTML = button.getAttribute("data-text-swap");
+  }
+}, false);
+
+var change_heater = function() {
+  if (heater == "OFF") {
+    socket.emit("heater","ON");
+  } else {
+    socket.emit("heater","OFF");
+  }
+};
+
+function checkTime(i) {
+  if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+
+function update(mokidata) {
+  mbar = mokidata.mbar/100;
+  temp1 = mokidata.temp1;
+  temp2 = mokidata.temp2;
+  humidity = mokidata.humidity;
+  heater  = mokidata.heater;
+}
+
+function display() {
+  var today=new Date();
+
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.font = '14pt Verdana';
+  context.lineWidth = 1;
+  context.fillStyle = "#aaaa55";
+  context.fillText( today.getDate()+" "+month_name[today.getMonth()]+" "+today.getFullYear(), 10, 20);
+  context.fillText( checkTime(today.getHours())+":"+checkTime(today.getMinutes())+":"+checkTime(today.getSeconds()), 10, 40);
+  context.fillText( "Moki Boat (Raspberry PI)", 10, 60);
+
+  context.fillText( "Mbar", 300, 20);
+  context.fillText( "Humidity", 300, 40);
+  context.fillText( "Heater", 300, 60);
+  context.fillText( "Temp 1", 600, 20);
+  context.fillText( "Temp 2", 600, 40);
+  context.fillText( ": "+mbar, 400, 20);
+  context.fillText( ": "+humidity+" %", 400, 40);
+  context.fillText( ": "+heater, 400, 60);
+  context.fillText( ": "+temp1+" C", 720, 20);
+  context.fillText( ": "+temp2+" C", 720, 40);
+
+  context.stroke();
+}
+
+function mainloop() {
+  display();
+}
+
+function init() {
+  setInterval(mainloop, 20);
+}
+socket.on("connect", function () {
+   constatus = 'Connected';
+});
+
+socket.on("disconnect", function () {
+   constatus = 'Disonnected';
+});
+
+socket.on("mokidata", function(mokidata) {
+  update(mokidata);
+});
+
+
+
+init();
+
+</script>
+
+</body>
+</html>
+
+

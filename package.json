@@ -1,0 +1,41 @@
+{
+  "name": "Moki",
+  "version": "0.0.1",
+  "description": "Remote-control Moki",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Moki38/Moki.git"
+  },
+  "keywords": [
+    "Raspberry PI",
+    "PI",
+    "Boat Automation",
+    "Node.js",
+    "I2C",
+    "RPI"
+  ],
+  "dependencies": {
+    "express": ">= 4.6.1",
+    "socket.io": ">= 1.0.6",
+    "i2c": ">= 0.1.4",
+    "bmp085-sensor": ">= 0.0.4",
+    "i2c-2relay": ">= 0.0.1",
+    "node-dht-sensor": ">= 0.0.5",
+    "async": "0.1.22"
+  },
+  "author": {
+	"name": "Eric van Dijken <eric@team-moki.nl>"
+	},
+  "contributors": [
+    {
+      "name": "None",
+      "email": "@",
+      "url": "https://github.com/none"
+    }
+  ],
+"scripts": {
+        "start": "node server.js"
+    },
+  "license": "MIT"
+}
