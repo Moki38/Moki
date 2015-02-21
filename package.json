@@ -1,6 +1,6 @@
 {
   "name": "Moki",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Remote-control Moki",
   "main": "server.js",
   "repository": {
@@ -9,6 +9,7 @@
   },
   "keywords": [
     "Raspberry PI",
+    "Banana Pro",
     "PI",
     "Boat Automation",
     "Node.js",
@@ -19,9 +20,12 @@
     "express": ">= 4.6.1",
     "socket.io": ">= 1.0.6",
     "i2c": ">= 0.1.4",
-    "bmp085-sensor": ">= 0.0.4",
+    "shelljs": ">= 0.3.0",
+    "bmp085": ">= 0.3.2",
     "i2c-2relay": ">= 0.0.1",
-    "node-dht-sensor": ">= 0.0.5",
+    "htu21d": ">= 0.2.0",
+    "nmea": ">= 0.0.7",
+    "serialport": "1.4.9",
     "async": "0.1.22"
   },
   "author": {
@@ -29,9 +33,9 @@
 	},
   "contributors": [
     {
-      "name": "None",
+      "name": "",
       "email": "@",
-      "url": "https://github.com/none"
+      "url": "https://github.com/None"
     }
   ],
 "scripts": {
