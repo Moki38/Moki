@@ -7,4 +7,4 @@ VALUE=$2
 
 $RRDTOOL update $RRDDIR/$1.rrd N:$2
 
-echo "`date` $1 $2" >> $RRDDIR/update.log
+#echo "`date` $1 $2" >> $RRDDIR/update.log

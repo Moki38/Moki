@@ -2,7 +2,7 @@
   "name": "Moki",
   "version": "0.1.1",
   "description": "Remote-control Moki",
-  "main": "server.js",
+  "main": "moki.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Moki38/Moki.git"
@@ -17,20 +17,23 @@
     "RPI"
   ],
   "dependencies": {
+    "i2c": "https://github.com/polaris/node-i2c",
+    "async": "0.1.22",
+    "bmp085": "0.4.0",
     "express": ">= 4.6.1",
-    "socket.io": ">= 1.0.6",
-    "i2c": ">= 0.1.4",
-    "shelljs": ">= 0.3.0",
-    "bmp085": ">= 0.3.2",
-    "i2c-2relay": ">= 0.0.1",
-    "htu21d": ">= 0.2.0",
+    "prettyjson": "1.1.3",
+    "json-response": "0.0.2",
+    "node-json2html": "1.0.0",
     "nmea": ">= 0.0.7",
-    "serialport": "1.4.9",
-    "async": "0.1.22"
+    "terminal-kit": ">= 0.24.1",
+    "serialport": ">= 1.4.9",
+    "true-wind": ">= 0.0.2",
+    "shelljs": ">= 0.3.0",
+    "socket.io": ">= 1.0.6"
   },
   "author": {
-	"name": "Eric van Dijken <eric@team-moki.nl>"
-	},
+    "name": "Eric van Dijken <eric@team-moki.nl>"
+  },
   "contributors": [
     {
       "name": "",
@@ -38,8 +41,8 @@
       "url": "https://github.com/None"
     }
   ],
-"scripts": {
-        "start": "node server.js"
-    },
+  "scripts": {
+    "start": "node moki.js"
+  },
   "license": "MIT"
 }

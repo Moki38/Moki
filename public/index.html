@@ -89,21 +89,21 @@
   </head>
 
   <body bgcolor="#00000000">
-<body style="background-image:url('/motion/cam2/lastsnap.jpg');background-repeat:no-repeat;">
+<body style="background-image:url('/motion/cam1/lastsnap.jpg');background-repeat:no-repeat;">
 
 <button class=myButton onclick="change_heater()" data-text-swap="Heater ON">Heater OFF</button>
 
 <script type="text/javascript">
 var cam1_window = function() {
-window.open("http://10.10.10.6:8080/javascript_simple.html", "CAMERA 1", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=810, height=610", border="0");
+window.open("http://172.16.10.6:8080/javascript_simple.html", "CAMERA 1", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=810, height=610", border="0");
 window.blur();
 }
 var cam2_window = function() {
-window.open("http://10.10.10.6:8081/javascript_simple.html", "CAMERA 2", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=810, height=610", border="0");
+window.open("http://172.16.10.6:8081/javascript_simple.html", "CAMERA 2", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=810, height=610", border="0");
 window.blur();
 }
 var cam3_window = function() {
-window.open("http://10.10.10.6:8082/javascript_simple.html", "CAMERA 3", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=810, height=610", border="0");
+window.open("http://172.16.10.6:8082/javascript_simple.html", "CAMERA 3", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=810, height=610", border="0");
 window.blur();
 }
 </script>
@@ -294,40 +294,85 @@ Daily Graph (5 minute averages)
 <br>
 <img src='/rrd/heater_hourly.png'>
 <img src='/rrd/cputemp_hourly.png'>
-<img src='/rrd/temp0_hourly.png'>
 <img src='/rrd/temp1_hourly.png'>
+<img src='/rrd/temp2_hourly.png'>
 <img src='/rrd/hum_hourly.png'>
-<img src='/rrd/bar_hourly.png'>
-<img src='/rrd/volt0_hourly.png'>
-<img src='/rrd/volt1_hourly.png'>
+<img src='/rrd/mbar_hourly.png'>
 <img src='/rrd/windspd_hourly.png'>
+<img src='/rrd/bmv_v_hourly.png'>
+<img src='/rrd/bmv_i_hourly.png'>
+<img src='/rrd/bmv_soc_hourly.png'>
+<img src='/rrd/bmv_vs_hourly.png'>
+<img src='/rrd/bmv_vb_hourly.png'>
+<img src='/rrd/solar_vpv_hourly.png'>
+<img src='/rrd/solar_i_hourly.png'>
+<img src='/rrd/solar_ppv_hourly.png'>
+<img src='/rrd/solar_cs_hourly.png'>
+<img src='/rrd/solar_yt_hourly.png'>
+<img src='/rrd/solar_yy_hourly.png'>
 <br>
 Weekly Graph (30 minute averages)
 <br>
 <img src='/rrd/heater_daily.png'>
 <img src='/rrd/cputemp_daily.png'>
-<img src='/rrd/temp0_daily.png'>
 <img src='/rrd/temp1_daily.png'>
+<img src='/rrd/temp2_daily.png'>
 <img src='/rrd/hum_daily.png'>
-<img src='/rrd/bar_daily.png'>
-<img src='/rrd/volt0_daily.png'>
-<img src='/rrd/volt1_daily.png'>
+<img src='/rrd/mbar_daily.png'>
 <img src='/rrd/windspd_daily.png'>
+<img src='/rrd/bmv_v_daily.png'>
+<img src='/rrd/bmv_i_daily.png'>
+<img src='/rrd/bmv_soc_daily.png'>
+<img src='/rrd/bmv_vs_daily.png'>
+<img src='/rrd/bmv_vb_daily.png'>
+<img src='/rrd/solar_vpv_daily.png'>
+<img src='/rrd/solar_i_daily.png'>
+<img src='/rrd/solar_ppv_daily.png'>
+<img src='/rrd/solar_cs_daily.png'>
+<img src='/rrd/solar_yt_daily.png'>
+<img src='/rrd/solar_yy_daily.png'>
 <br>
 Monthly Graph (2 hour averages)
 <br>
 <img src='/rrd/heater_monthly.png'>
 <img src='/rrd/cputemp_monthly.png'>
-<img src='/rrd/temp0_monthly.png'>
 <img src='/rrd/temp1_monthly.png'>
+<img src='/rrd/temp2_monthly.png'>
 <img src='/rrd/hum_monthly.png'>
-<img src='/rrd/bar_monthly.png'>
-<img src='/rrd/volt0_monthly.png'>
-<img src='/rrd/volt1_monthly.png'>
+<img src='/rrd/mbar_monthly.png'>
 <img src='/rrd/windspd_monthly.png'>
+<img src='/rrd/bmv_v_monthly.png'>
+<img src='/rrd/bmv_i_monthly.png'>
+<img src='/rrd/bmv_soc_monthly.png'>
+<img src='/rrd/bmv_vs_monthly.png'>
+<img src='/rrd/bmv_vb_monthly.png'>
+<img src='/rrd/solar_vpv_monthly.png'>
+<img src='/rrd/solar_i_monthly.png'>
+<img src='/rrd/solar_ppv_monthly.png'>
+<img src='/rrd/solar_cs_monthly.png'>
+<img src='/rrd/solar_yt_monthly.png'>
+<img src='/rrd/solar_yy_monthly.png'>
 <br>
 Yearly Graph (12 hour averages)
 <br>
+<img src='/rrd/heater_yearly.png'>
+<img src='/rrd/cputemp_yearly.png'>
+<img src='/rrd/temp1_yearly.png'>
+<img src='/rrd/temp2_yearly.png'>
+<img src='/rrd/hum_yearly.png'>
+<img src='/rrd/mbar_yearly.png'>
+<img src='/rrd/windspd_yearly.png'>
+<img src='/rrd/bmv_v_yearly.png'>
+<img src='/rrd/bmv_i_yearly.png'>
+<img src='/rrd/bmv_soc_yearly.png'>
+<img src='/rrd/bmv_vs_yearly.png'>
+<img src='/rrd/bmv_vb_yearly.png'>
+<img src='/rrd/solar_vpv_yearly.png'>
+<img src='/rrd/solar_i_yearly.png'>
+<img src='/rrd/solar_ppv_yearly.png'>
+<img src='/rrd/solar_cs_yearly.png'>
+<img src='/rrd/solar_yt_yearly.png'>
+<img src='/rrd/solar_yy_yearly.png'>
 <br>
 </font>
 </body>
